@@ -1,0 +1,45 @@
+\section{Temporally-oriented possession} \label{sec:intro}
+
+From a linguistic perspective, the term \textit{possession} refers to a particular set of semantic relations between two entities, the \textit{possessor} and the \textit{possessee} \cite{stassen2009predicative}.
+The most typical notion of possession involves ownership or control of the possessee by the possessor, as in phrases like ``my piano,'' ``the lion's beautiful tail,'' or ``this friend of mine.''
+A wide range of different asymmetric relationships fall under the heading of possession, including kinship, proximity, part-whole relations, experience of abstract concepts, and physical possession, both permanent and temporary. 
+The linguistic literature makes a conceptual distinction between \textit{alienable possession}, in which possessees can be separated from their possessors, and \textit{inalienable possession}, in which such separation is not possible \cite[among others]{aikhenvald2012possession,heine2006possession}.
+
+We are interested in alienable possession, and specifically in what we call \textbf{temporally-oriented possession} - changes in possession of an object over time.
+% * <dhivyainfantchinnappa@my.unt.edu> 2018-01-11T02:23:45.056Z:
+% 
+% 'the phenomena'?
+% 
+% ^ <alexispalmer@gmail.com> 2018-01-11T02:46:35.612Z:
+% 
+% changed
+%
+% ^.
+Temporality is an essential aspect of the linguistic discussion  of possession; in fact, the alienable/inalienable distinction can be viewed through the lens of temporality. 
+Inalienable possessions are permanent possessions, while alienable possessions are temporary and, therefore, capable of changing hands.
+
+\input{figures/nightcafe}
+
+The goal of this work is to facilitate a better understanding of temporally-oriented possession, in order to develop methods for automatic extraction of possession timelines from text. 
+A possession timeline (see also Section~\ref{sec:timeline}) is an ordered presentation of the multiple possessors of some artifact.
+Possession timelines could be used to enrich event timelines, potentially improving causal inference, as well as supporting text understanding. 
+To this end, we present a new corpus of Wikipedia articles annotated with temporally-oriented possession information.
+
+Previous work on possession in the NLP context has mostly focused on particular syntactic constructions.
+\citet{conf/acl/TratzH13} investigate various semantic relations realized by English possessive constructions, and both \citet{Nakov:2013:SIN:2483969.2483975} and \citet{Tratz:2010:TDC:1858681.1858751} consider possession expressed in the form of noun compounds, such as ``family estate.''
+We instead consider \textit{all} expressions of possession relations, whether phrasal, clausal, sentential, or even inter-sentential.
+This non-restrictive approach is similar to that of \citet{BANEA16.1105}, who annotate possessions of particular bloggers at the time of utterance.
+We instead focus on a particular set of artifacts, annotating their multiple possessors, as well as the order in which the artifacts pass from one party to another.
+\citet{BANEA16.1105} include temporality in their annotations; each possession is typed as either temporary or permanent.
+
+Our corpus is a set of Wikipedia articles about well-known artifacts which have been associated with different possessors over time; an excerpt of one article appears in Figure~\ref{fig:nightCafe}.
+%: mostly paintings, but also some relics, diamonds, and archaeological discoveries. 
+%All are artifacts which have changed hands many times, sometimes in notable ways.
+In this data, both artifacts and their possessors are concrete entities, and possessors are limited to people, organizations, and locations.
+We first extract all possession relations, in the form of artifact-possessor pairs, from each article, then annotate each relation with temporal features.
+Finally, we arrange the possessors for a given artifact into a possession timeline.
+ 
+
+
+
+

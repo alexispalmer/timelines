@@ -1,0 +1,37 @@
+\section{Discussion}\label{sec:disc}
+Temporally-oriented possession is a new task, and this is a new annotation scheme.
+In order to measure the soundness and reliability of the annotation scheme, a portion of the articles (12/90, or 13\%) are annotated by a second annotator. 
+The articles were selected randomly from a subset of articles of roughly average length for the corpus, in order to reduce oddities due to overly long (or short) texts.
+
+\paragraph{Inter-annotator agreement} was calculated for each feature of the annotations.
+Overall, annotator agreement is very high, suggesting that the task is well-defined and the annotation scheme reliable.
+
+First, we look at identification of artifact-possessor pairs. 
+We treat Annotator A's labels as a pseudo-gold standard and measure precision and recall of Annotator B's labels as compared to Annotator A. 
+Precision is 0.97, and recall is 0.69.\footnote{If we instead treat Annotator B as gold standard, the precision and recall numbers are simply reversed.}
+
+Inter-annotator agreement for the temporal and certainty features is calculated only for the set of artifact-possessor pairs identified by both annotators.
+For both possession certainty and duration certainty, Cohen's $\kappa$ is very high (0.92). 
+Agreement is more moderate, but still substantial, for the temporal features. 
+Cohen's $\kappa$ for the temporal anchor is 0.77. 
+For the duration of the possession (before/during/after), Cohen's $\kappa$ is 0.76.
+
+%The inter-annotator agreement for possessors was calculated by treating one of the annotations as gold standard. The precision for possessors for the other annotations with respect to the gold annotations is 0.97 and the recall is 0.69. We did not calculate the precision and recall by treating the other annotations as gold, as we have only two annotators and doing so would only interchange the precision and recall. 
+%The rest of the inter-annotator agreements were calculated for the annotations only if the annotators agree on the possessor. Cohen's k for possession certainty is 0.92. Considering the features of duration, Cohen's k for the duration of possession is 0.76, temporal anchor of duration is 0.77, and for the certainty of duration is 0.92. 
+For the order of possession, we generate a list of ordered pairs of possessors for both annotators and then compare. Precision between the two lists of pairs is 0.93, and recall is 0.90.
+
+
+
+% \subsection{Interesting cases found in the data}
+
+
+
+% \greennote{Maybe instead - what is and isn't interesting in these annotations}
+
+% \greennote{I'm a little concerned that, in the process of showing cool examples and interesting cases, we will have convinced the reader that too much inference is involved to ever extract this information automatically.}
+
+\paragraph{Conclusions and future work.}
+We have presented a new corpus annotated with temporally-oriented possessions.
+The goal of this corpus is to enable further research: a) to better understand the nature of changes in possession over time; b) to analyze how such possession changes are realized in text; and c) to lay a foundation for automatic extraction of possession timelines.
+
+Extracting temporally anchored possessions may be useful in analyzing and understanding the history of the artifacts, as well as for enriching more general event timelines. 

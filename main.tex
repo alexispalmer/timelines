@@ -1,0 +1,111 @@
+%
+% File acl2019.tex
+%
+%% Based on the style files for ACL 2018, NAACL 2018/19, which were
+%% Based on the style files for ACL-2015, with some improvements
+%%  taken from the NAACL-2016 style
+%% Based on the style files for ACL-2014, which were, in turn,
+%% based on ACL-2013, ACL-2012, ACL-2011, ACL-2010, ACL-IJCNLP-2009,
+%% EACL-2009, IJCNLP-2008...
+%% Based on the style files for EACL 2006 by 
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{acl2019}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{diagbox}
+
+% commenting commands producing text in different colors
+\newcommand{\bluenote}[1]{\textcolor{blue}{[#1]}}
+\newcommand{\rednote}[1]{\textcolor{red}{[#1]}}
+\newcommand{\greennote}[1]{\textcolor{green}{[#1]}}
+
+% more compact versions of enumerate and itemize
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+  
+\newenvironment{packed_item}{
+\begin{itemize} %[leftmargin=0.15in]
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+% example environment
+\newcounter{examplecounter}
+\newenvironment{example}{\begin{quote}
+ \refstepcounter{examplecounter}
+ \textbf{(\arabic{examplecounter})}
+ \quad
+}{\end{quote}}
+
+
+%\aclfinalcopy % Uncomment this line for the final submission
+%\def\aclpaperid{***} %  Enter the acl Paper ID here
+
+%\setlength\titlebox{5cm}
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
+\newcommand\BibTeX{B\textsc{ib}\TeX}
+
+\title{Timeline generation for evaluation of language understanding}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In this paper we introduce two new benchmark corpora for evaluation of language understanding systems. Both corpora target generation of timelines from text, and both tasks involve non-trivial amounts of inference in order to cover temporal relationships not explicitly described in the text. 
+\end{abstract}
+
+\input{tex/intro}
+\input{tex/task1.tex}
+\input{tex/task2.tex}
+\input{tex/exps}
+\input{tex/disc}
+
+%\section*{Acknowledgments}
+
+%The acknowledgments should go immediately before the references.  Do
+%not number the acknowledgments section. Do not include this section
+%when submitting your paper for review. \\
+
+%\noindent \textbf{Preparing References:} \\
+%Include your own bib file like this:
+%\verb|\bibliographystyle{acl_natbib}|
+%\verb|\bibliography{acl2019}| 
+
+%where \verb|acl2019| corresponds to a acl2019.bib file.
+\bibliography{pessimism}
+\bibliographystyle{acl_natbib}
+
+%\appendix
+
+
+\end{document}

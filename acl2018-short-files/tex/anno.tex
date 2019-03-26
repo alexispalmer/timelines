@@ -1,0 +1,159 @@
+\section{Annotating temporally-oriented possession}\label{sec:anno}
+
+The annotation scheme was designed primarily to capture all temporal information relevant to changes of possession over time. 
+In addition, we annotate whether particular features are certain or not, given the available textual evidence.
+
+
+For consistency, annotators were provided with HTML pages of the 90 selected Wikipedia articles as downloaded on 12th June 2017. 
+Annotation was done using the Wired-Marker\footnote{http://www.wired-marker.org/en} Firefox extension to annotate the HTML pages. 
+First, all possessors of the target artifacts (Section~\ref{sec:possessors}) were highlighted, using different-colored markers (provided by Wired-Marker) for different named entity types (Section~\ref{sec:nes}). 
+All other annotation features (Sections~\ref{sec:cert}, \ref{sec:temporal}, \ref{sec:timeline}) were added to the highlighted text using Wired-Marker's notes function.
+
+The annotators were instructed to read the entire document to decide on the possessors and the order of possession. 
+Unless a possessor possessed the artifact at different points in time, only one mention of each possessor is annotated. 
+
+
+
+\subsection{Possessors and possessees/artifacts} \label{sec:possessors}
+For each article, we focus on a single possessee/artifact, namely the topic of the article. 
+For that artifact, we identify all possessors \textit{of that artifact} mentioned over the course of the article. 
+The corpus consists of all artifact-possessor pairs identified from the selected Wikipedia articles. 
+We extract 799 pairs in all, with 735 remaining after removing pairs which repeat within a single article. 
+For example, the text snippet seen in Figure~\ref{fig:nightCafe} yields the following pairs:\footnote{The complete annotations for the article containing the text snippet are shown in Table~\ref{tab:timeline}.}
+
+{\small
+\begin{verbatim}
+1. Night_Cafe-Ivan_Morozov
+2. Night_Cafe-Soviet_authorities
+3. Night_Cafe-Stephen_Carlton_Clark
+4. Night_Cafe-Yale_University
+\end{verbatim}
+}
+
+
+\subsection{The role of named entities} \label{sec:nes}
+The possessors identified each fall into one of three named entity (NE) categories: Person, Organization (e.g. museums or universities), or Location (e.g. particular cities, states, or countries). 
+The NE type of each possessor is labeled manually, with the distribution shown in Table~\ref{tab:anno-stats}. 
+Organizations are the most frequent possessors, followed by People and then Locations. 
+Although the possessors fall neatly into traditional NE categories, many of them are not in fact recognized by standard NE taggers. 
+These include cases like (\ref{ex:storm}): the thieves who stole the painting in 1990, and presumably possessed it for at least some time thereafter, are unnamed.\footnote{In examples, possessors (and sometimes temporal anchors) in boldface; relevant Wikipedia article in brackets.} English NER systems may also struggle to recognize possessors such as ``artist's daughter'' or names in other languages.
+
+\input{tables/statistics-anno}
+
+\input{tables/timeline}
+
+\begin{example}
+On the morning of March 18, 1990, \textbf{thieves} disguised as police officers broke into the museum and stole \textit{The Storm on the Sea of Galilee} and 12 other works. {\small [WP: \textit{The Storm on the Sea of Galilee}]} \label{ex:storm}
+\end{example}
+
+\subsection{Certainty of possession} \label{sec:cert}
+For each artifact-possessor pair, annotators are asked to assess the certainty of the possession relation. 
+We are interested in the notion of certainty as it relates to textual evidence: if the text \textit{of the entire article} strongly supports the relation, the instance should be marked as Certain (C). 
+If not, as Uncertain (UC). 
+Nearly all relations are marked as certain (see Table~\ref{tab:anno-stats}).
+Example (\ref{ex:genius}) illustrates a case of uncertainty - the phrase ``generally accepted'' indicates some degree of uncertainty on the part of the author.
+
+\begin{example}
+It was completed after Giorgione's death in 1510, with the landscape and sky generally accepted to have been completed by \textbf{Titian}. {\small[WP: \textit{The Sleeping Venus}]} \label{ex:genius}
+\end{example}
+
+\subsection{Annotating temporal location and duration} \label{sec:temporal}
+
+
+
+The core of our approach is the annotation of temporal features of the extracted possession relations (i.e. the artifact-possessor pairs). 
+
+\paragraph{Temporal anchor.}
+The first time-related annotation decision is to determine whether, according to the text, there is a temporal anchor associated with the given possession relation. 
+For cases when a possessor has held an artifact for more than one time period, different temporal anchors may be associated with the same artifact-possessor pair, as in \ref{ex:multiAnchor} below. 
+This painting was in the custody of its owner prior to the 1873 Exhibition, and then again for a period between the end of that exhibition and the painting's 1878 journey out of Russia.
+
+\begin{example}
+Despite its progressive implications, Barge Haulers was bought by the \textbf{Tsar's second son}. It was lent for exhibition at the 1873 \textbf{International Exhibition} in \textbf{Vienna}, where it won a bronze medal. It was exhibited \textbf{outside Russia} again in 1878... {\small[WP: \textit{Barge Haulers on the Volga}]} \label{ex:multiAnchor}
+\end{example}
+
+% \begin{example}
+% It was exhibited in the Uffizi Gallery for over two weeks and returned to the Louvre on 4 January 1914. {\small [WP: ???]} 
+% \end{example}
+
+% in case we need a shorter example for multiple anchors
+
+
+\noindent
+If a temporal anchor cannot be identified, the other temporal features are not relevant. 
+Looking again at Figure~\ref{fig:nightCafe}, only one of the four possessors has an identifiable temporal anchor: \textbf{Soviet authorities} and \textbf{1930}.
+In the corpus, 660 of 799 possessors are associated with a temporal anchor.
+
+
+
+% \begin{example}
+% The Birth of Venus (Italian: Nascita di Venere) is a painting by Sandro Botticelli probably made in the mid 1480s. {\small [WP: \textit{The Birth of Venus}]}
+% \end{example}
+
+\paragraph{Duration of possession.}
+The temporal anchors identified in the previous annotation step are defined in a manner specific to this task. 
+First, temporal anchors are marked at the level of the year; particular days or months are ignored. 
+
+In the ideal case, the temporal anchor covers the entire period of possession (e.g. ``1983-1987''), but more often the text mentions a date or historical event (e.g. World War II) which may or may not lie within the duration of possession for a particular possessor.
+In order to build possession timelines, we need to know how the temporal anchor relates to the period of possession. 
+Thus we annotate three different categories of duration: Before (possession occurred prior to temporal anchor, (\ref{ex:before})), During (possession period includes temporal anchor, (\ref{ex:during})), and After (possession occurred after temporal anchor, (\ref{ex:after}).
+
+\begin{example}
+At some undetermined point before \textbf{1516} it came into the possession of \textbf{Don Diego de Guevara} ... {\small[WP: \textit{The Arnolfini Portrait}]} \label{ex:before}
+\end{example}
+
+\begin{example}
+In \textbf{1599} a German visitor saw it in the \textbf{Alcazar Palace} in \textbf{Madrid}. {\small [WP: \textit{The Arnolfini Portrait}]} \label{ex:during}
+\end{example}
+
+\begin{example}
+In \textbf{1530} the painting was inherited by Margaret's niece \textbf{Mary} of Hungary, who in 1556 went to live in Spain. {\small [WP: \textit{The Arnolfini Portrait}]} \label{ex:after}
+\end{example}
+
+\subsection{Possession ordering and timeline} \label{sec:timeline}
+
+The final annotation task is to order the possessors according to when each had control of the artifact in question, building up a \textbf{possession timeline}. 
+Each possessor is given a serial number, depending on the order in which the artifact was possessed. 
+Usually the artist who created or found the artifact (if known) is assigned the serial number 1. 
+The next possessor gets the serial number 2, and so forth.
+An example timeline can be seen in Table~\ref{tab:timeline}.
+
+Annotation relies on the complete textual context, often allowing the annotator to determine ordering of possession events even if explicit temporal anchors are not stated in the text. 
+%This ordering annotation often provides possession timeline information even without an explicit statement of the year of a temporal anchor. 
+For example, in Figure~\ref{fig:nightCafe}, we can easily infer that the possessor (\textbf{Yale University}) to whom the painting was bequeathed appears in the timeline later than the possessor who did the bequeathing.
+
+When two possessors held the artifact simultaneously (e.g. \textbf{Yale University} and \textbf{New Haven, Connecticut}), both appear at the same position in the timeline. 
+A possessor can receive multiple serial numbers when there are multiple relevant periods of possession (as in (\ref{ex:multiAnchor})), and repeated mentions of possessors tied to the same period of possession are marked as (e.g.) 1.1, 1.2, 1.3.
+
+% \subsection{Dump of statistics}
+% The numbers below indicate possessors that could be duplicates. That is, the same possessor can be found in more than one position in the timeline.
+% Total number of possessors in all articles: 799
+% Total number of possessors who are persons in all articles: 281
+% Total number of possessors that are organizations in all articles: 318
+% Total number of possessors that are locations in all articles: 200
+% Total number of certain possessors in all articles: 774
+% Total number of uncertain possessors in all articles: 25
+% Total number of possessors with time unknown in all articles: 139
+% Total number of possessors with time known in all articles: 660
+% Total number of duration modifiers as 'Before' in all articles: 7
+% Total number of duration modifiers as 'During' in all articles: 647
+% Total number of duration modifiers as 'After' in all articles: 6
+% Total number of possessors where the time duration is certain in all articles: 608
+% Total number of possessors where the time duration is uncertain in all articles: 52
+% Average number of possessors per article: 8.68
+% Average number of possessors who are persons per article: 3.05
+% Average number of possessors that are organizations per article: 2.17
+% Average number of possessors that are locations per article: 3.45
+
+% The following numbers correspond to unique possessors. That is, if the same possessor is found in more than one position in the timeline, only one of them is counted.
+
+% Total number of possessors in all articles: 735
+% Total number of possessors who are persons in all articles: 276
+% Total number of possessors that are organizations in all articles: 168
+% Total number of possessors that are locations in all articles: 291
+% Average number of possessors per article: 7.989
+% Average number of possessors who are persons per article: 3
+% Average number of possessors that are organizations per article: 1.82
+% Average number of possessors that are locations per article: 3.16
+
+

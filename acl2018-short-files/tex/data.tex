@@ -1,0 +1,16 @@
+%\section{Data: Famous paintings in Wikipedia} 
+\section{Data: Wikipedia articles about famous artifacts}
+\label{sec:data}
+
+\input{tables/statistics-corpus}
+We collected a corpus of Wikipedia articles about historical artifacts that could possibly change hands over time, being held by different possessors in different years. 
+The article topics included paintings, diamonds, relics, and archaeological findings.
+Wikipedia articles were chosen due to both their free availability and the fact that multiple authors contribute to the content. 
+
+Next, the set of articles was filtered to retain only articles that: a) do not discuss more than one artifact; and b) contain at least three possessors for the artifact.
+The resulting corpus consists of 90 articles, with each article focusing on a single target artifact. 
+For a given article, the target artifact is the possessee in all identified possession relations.
+Table~\ref{tab:corpus-stats} shows basic statistics for the corpus. Note that we count both the total number of possessors and the number of unique possessors. The latter number removes counts for possessors which appear more than once in a given article.
+
+The data and annotations are freely available.\footnote{Link currently withheld for reasons of anonymity.}
+% The contribution from different people to the contents and the free availability made Wikipedia the right choice to annotate temporally-oriented possessions. We chose Wikipedia articles about historical artifacts that could possibly be possessed by different possessors in different years. The articles included paintings, diamonds, relics, and archaeological findings.  After rejecting all articles that described about more than one artifact in the same article and all articles that had less than three possessors we ended up with ninety articles. The articles on an average had 6.66 sections and 8.87 possessors. The data and the annotations are available in <link>.
